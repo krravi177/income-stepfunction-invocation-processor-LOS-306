@@ -1,2 +1,2 @@
-# income-stepfunction-invocation-processor-LOS-306
-LOAN Organisation System
+# income-stepfunction-invocation-processor
+Application to start voie instant income capablity step function

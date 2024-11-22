@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.xpanse.los</groupId>
+	<artifactId>income-stepfunction-invocation-processor</artifactId>
+	<version>0.1.0</version>
+	<packaging>jar</packaging>
+
+	<name>income-stepfunction-invocation-processor</name>
+	<description>Application to start voie processor step function</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>17</java.version>
+		<awssdk.version>2.16.7</awssdk.version>
+		<lambda-java-core.version>1.2.3</lambda-java-core.version>
+		<maven-shade-plugin.version>2.3</maven-shade-plugin.version>
+	</properties>
+
+	<!-- https://mvnrepository.com/artifact/software.amazon.awssdk/bom -->
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>software.amazon.awssdk</groupId>
+				<artifactId>bom</artifactId>
+				<version>${awssdk.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+	
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-lambda-java-core</artifactId>
+			<version>${lambda-java-core.version}</version>
+		</dependency>
+
+	
+		<dependency>
+		    <groupId>software.amazon.awssdk</groupId>
+		    <artifactId>sqs</artifactId>
+		</dependency>
+
+		<dependency>
+		    <groupId>software.amazon.awssdk</groupId>
+		    <artifactId>sfn</artifactId>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>${maven-shade-plugin.version}</version>
+				<executions>
+					<!-- Run shade goal on package phase -->
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
